@@ -66,5 +66,36 @@ public class Evaluator
         int numVars = variables.size();
         boolean inputs[] = new boolean[numVars];
 
+        //Set initial inputs to all false
+        for(int i=0;i<inputs.length;i++)
+        {
+            inputs[i] = false;
+        }
+
+        /*
+        Magic Function
+        vertPos%((numVars+1)/(2*(horzPos+1))) == 0 ?
+        T -> F
+        F -> T
+        */
+
+        for(int vertPos=0;vertPos<Math.pow(2,numVars);vertPos++)
+        {
+            for(int horzPos=0;horzPos<numVars;horzPos++)
+            {
+                if(vertPos%(Math.pow(2,numVars)/(2*(horzPos+1))) == 0) // This works I swear
+                {
+                    inputs[horzPos] = !inputs[horzPos];
+                }
+            }
+
+            //Display Row Stuff
+            for(int i=0;i<inputs.length;i++)
+            {
+                System.out.print(variables.get(i)+":"+inputs[i]+ "\t");
+            }
+            System.out.println("result:" + evaluatePostfixExpression(expression,inputs));
+        }
+
     }
 }

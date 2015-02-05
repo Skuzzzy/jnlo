@@ -37,8 +37,9 @@ public class Main
         */
 
         boolean[] inputs = {true,true,true};
-        System.out.println("a = true    b = true  c = true");
-        System.out.println(Evaluator.evaluatePostfixExpression(dips,inputs));
+        //System.out.println("a = true    b = true  c = true");
+        //System.out.println(Evaluator.evaluatePostfixExpression(dips,inputs));
+        Evaluator.displayTruthTable(dips);
     }
 
 }
