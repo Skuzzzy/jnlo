@@ -71,18 +71,17 @@ public class Evaluator
         {
             inputs[i] = false;
         }
-
-        /*
-        Magic Function
-        vertPos%((numVars+1)/(2*(horzPos+1))) == 0 ?
-        T -> F
-        F -> T
-        */
-
+        for(int i=0;i<variables.size();i++)
+        {
+            System.out.print(variables.get(i)+"\t\t");
+        }
+        System.out.println("Result");
+        
         for(int vertPos=0;vertPos<Math.pow(2,numVars);vertPos++)
         {
             for(int horzPos=0;horzPos<numVars;horzPos++)
             {
+                // Magic if statement! Do not touch!
                 if(vertPos%(Math.pow(2,numVars)/(2*(horzPos+1))) == 0) // This works I swear
                 {
                     inputs[horzPos] = !inputs[horzPos];
@@ -92,9 +91,9 @@ public class Evaluator
             //Display Row Stuff
             for(int i=0;i<inputs.length;i++)
             {
-                System.out.print(variables.get(i)+":"+inputs[i]+ "\t");
+                System.out.print(inputs[i]+ "\t");
             }
-            System.out.println("result:" + evaluatePostfixExpression(expression,inputs));
+            System.out.println(evaluatePostfixExpression(expression,inputs));
         }
 
     }
