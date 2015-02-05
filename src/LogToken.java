@@ -3,5 +3,5 @@
  */
 public interface LogToken
 {
-
+    public String getTokenType();
 }

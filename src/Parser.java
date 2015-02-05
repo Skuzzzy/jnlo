@@ -1,4 +1,7 @@
+import sun.rmi.runtime.Log;
+
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * Created by dan on 2/5/15.
@@ -42,11 +45,57 @@ public class Parser
             {
                 System.out.println("Unknown character " + currentChar + ". Skipping it");
             }
-
             ++position;
         }
 
         return tokenizedExpression;
+    }
+
+    public static ArrayList<LogToken> convertToPostfix(ArrayList<LogToken> infixExpression)
+    {
+        ArrayList<LogToken> postfixExpression = new ArrayList<LogToken>();
+        Stack<LogToken> operatorStack = new Stack<LogToken>();
+
+        for(LogToken currentToken : infixExpression)
+        {
+            String currentTokenType = currentToken.getTokenType();
+            if(currentTokenType.equals("OrToken") || currentTokenType.equals("AndToken") || currentTokenType.equals("NotToken"))
+            {
+                while((operatorStack.size() > 0) && !operatorStack.peek().getTokenType().equals("LeftParenthesisToken") && ((Operator)operatorStack.peek()).getOperatorPrecedence() <= ((Operator)currentToken).getOperatorPrecedence())
+                {
+                    postfixExpression.add(operatorStack.pop());
+                }
+                operatorStack.add(currentToken);
+
+            }
+            else if(currentTokenType.equals("LeftParenthesisToken"))
+            {
+                operatorStack.add(currentToken);
+            }
+            else if(currentTokenType.equals("RightParenthesisToken"))
+            {
+                while(operatorStack.size() > 0 && !(operatorStack.peek()).getTokenType().equals("LeftParenthesisToken"))
+                {
+                    postfixExpression.add(operatorStack.pop());
+                }
+                operatorStack.pop();
+            }
+            else if(currentTokenType.equals("VariableToken"))
+            {
+                postfixExpression.add(currentToken);
+            }
+            else
+            {
+                System.out.println("Unknown token type " + currentTokenType + ". Skipping it");
+            }
+        }
+
+        while(operatorStack.size() > 0)
+        {
+            postfixExpression.add((LogToken)operatorStack.pop());
+        }
+
+        return postfixExpression;
     }
 
     public static boolean isOr(char c)

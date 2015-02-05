@@ -5,5 +5,11 @@ public class VariableToken implements LogToken
 {
     public VariableToken(char c)
     {
+
+    }
+
+    public String getTokenType()
+    {
+        return "VariableToken";
     }
 }

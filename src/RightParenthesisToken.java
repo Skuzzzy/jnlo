@@ -3,4 +3,10 @@
  */
 public class RightParenthesisToken implements LogToken
 {
+
+    public String getTokenType()
+    {
+        return "RightParenthesisToken";
+    }
+
 }
