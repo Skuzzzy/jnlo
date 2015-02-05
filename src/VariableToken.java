@@ -3,13 +3,20 @@
  */
 public class VariableToken implements LogToken
 {
+    char c;
+
     public VariableToken(char c)
     {
-
+        this.c = c;
     }
 
     public String getTokenType()
     {
         return "VariableToken";
+    }
+
+    public String toString()
+    {
+        return "" + c;
     }
 }

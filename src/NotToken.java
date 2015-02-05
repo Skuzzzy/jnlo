@@ -13,4 +13,9 @@ public class NotToken implements LogToken, Operator
     {
         return 1;
     }
+
+    public String toString()
+    {
+        return "!";
+    }
 }

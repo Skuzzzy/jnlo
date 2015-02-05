@@ -61,6 +61,9 @@ public class Parser
             String currentTokenType = currentToken.getTokenType();
             if(currentTokenType.equals("OrToken") || currentTokenType.equals("AndToken") || currentTokenType.equals("NotToken"))
             {
+                //While stack is not empty
+                //While the thing on top of the stack is not a LeftParenthesisToken
+                //While the operator on the top of the stack has a higher or equal precedence
                 while((operatorStack.size() > 0) && !operatorStack.peek().getTokenType().equals("LeftParenthesisToken") && ((Operator)operatorStack.peek()).getOperatorPrecedence() <= ((Operator)currentToken).getOperatorPrecedence())
                 {
                     postfixExpression.add(operatorStack.pop());

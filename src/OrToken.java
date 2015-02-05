@@ -13,4 +13,9 @@ public class OrToken implements LogToken, Operator
     {
         return 3;
     }
+
+    public String toString()
+    {
+        return "+";
+    }
 }

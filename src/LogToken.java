@@ -4,4 +4,5 @@
 public interface LogToken
 {
     public String getTokenType();
+    public String toString();
 }

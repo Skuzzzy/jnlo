@@ -16,7 +16,7 @@ public class Main
 
         for(LogToken chip : dips)
         {
-            System.out.print(chip.getTokenType()+" ");
+            System.out.print(chip.toString()+" ");
         }
     }
 }

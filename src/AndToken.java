@@ -13,4 +13,9 @@ public class AndToken implements LogToken, Operator
     {
         return 2;
     }
+
+    public String toString()
+    {
+        return "*";
+    }
 }

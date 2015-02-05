@@ -9,4 +9,9 @@ public class RightParenthesisToken implements LogToken
         return "RightParenthesisToken";
     }
 
+    public String toString()
+    {
+        return ")";
+    }
+
 }
