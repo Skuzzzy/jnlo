@@ -1,10 +1,12 @@
+jnlo - Short for jn logic
+
 Takes a string expression parses the string into tokens, then uses the shunting yard algorithm to convert the expression to postfix, this postfix expression can then be evaluated and the results printed in a truth table
 
 Sample output
 
 Expression: c*!(a+b)
 Postfix Reprepsentation: c a b + ! * 
-#	a		b		c		Result
+#	a	b	c	Result
 0	false	false	false	false
 1	false	false	true	true
 2	false	true	false	false
