@@ -6,4 +6,7 @@ package tokens;
 public interface Operator
 {
     public int getOperatorPrecedence();
+    public boolean evaluate(boolean[] inputs);
+    public int expectedParameters();
+
 }

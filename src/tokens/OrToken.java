@@ -20,4 +20,12 @@ public class OrToken implements LogToken, Operator
     {
         return "+";
     }
+
+    public boolean evaluate(boolean[] inputs) {
+        return (inputs[0] || inputs[1]);
+    }
+
+    public int expectedParameters() {
+        return 2;
+    }
 }

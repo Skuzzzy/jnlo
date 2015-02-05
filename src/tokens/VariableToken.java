@@ -19,6 +19,6 @@ public class VariableToken implements LogToken
 
     public String toString()
     {
-        return "" + c;
+        return c + "";
     }
 }

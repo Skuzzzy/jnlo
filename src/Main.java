@@ -19,9 +19,26 @@ public class Main
 
         ArrayList<LogToken> dips = Parser.convertToPostfix(chips);
 
+        /*
         for(LogToken chip : dips)
         {
             System.out.print(chip.toString()+" ");
         }
+        System.out.println("");
+        */
+
+        ;
+        ArrayList<String> asd = Evaluator.getLexographicalOrderOfVariables(chips);
+        /*
+        for(String s : asd )
+        {
+            System.out.println(s);
+        }
+        */
+
+        boolean[] inputs = {true,true,true};
+        System.out.println("a = true    b = true  c = true");
+        System.out.println(Evaluator.evaluatePostfixExpression(dips,inputs));
     }
+
 }

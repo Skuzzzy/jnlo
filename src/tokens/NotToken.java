@@ -20,4 +20,13 @@ public class NotToken implements LogToken, Operator
     {
         return "!";
     }
+
+    public boolean evaluate(boolean[] inputs) {
+        return !inputs[0];
+    }
+
+
+    public int expectedParameters() {
+        return 1;
+    }
 }
