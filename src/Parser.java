@@ -41,6 +41,10 @@ public class Parser
             {
                 tokenizedExpression.add(new VariableToken(currentChar));
             }
+            else if(currentChar == ' ')
+            {
+                // Ignore spaces
+            }
             else
             {
                 System.out.println("Unknown character " + currentChar + ". Skipping it");

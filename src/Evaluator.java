@@ -1,7 +1,6 @@
 import tokens.LogToken;
 import tokens.Operator;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
@@ -59,5 +58,13 @@ public class Evaluator
         Collections.sort(orderedVariableNames);
 
         return orderedVariableNames;
+    }
+
+    public static void displayTruthTable(ArrayList<LogToken> expression)
+    {
+        ArrayList<String> variables =  getLexographicalOrderOfVariables(expression);
+        int numVars = variables.size();
+        boolean inputs[] = new boolean[numVars];
+
     }
 }
