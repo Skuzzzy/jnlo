@@ -66,10 +66,10 @@ public class Evaluator
         int numVars = variables.size();
         boolean inputs[] = new boolean[numVars];
 
-        //Set initial inputs to all false
+
         for(int i=0;i<inputs.length;i++)
         {
-            inputs[i] = false;
+            inputs[i] = true; //Whatever the inputs are set to here will be flipped
         }
         for(int i=0;i<variables.size();i++)
         {
@@ -82,7 +82,7 @@ public class Evaluator
             for(int horzPos=0;horzPos<numVars;horzPos++)
             {
                 // Magic if statement! Do not touch!
-                if(vertPos%(Math.pow(2,numVars)/(2*(horzPos+1))) == 0) // This works I swear
+                if(vertPos%(Math.pow(2,numVars)/Math.pow(2,horzPos+1)) == 0) // This works I swear
                 {
                     inputs[horzPos] = !inputs[horzPos];
                 }
