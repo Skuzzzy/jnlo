@@ -76,7 +76,7 @@ public class Evaluator
             System.out.print(variables.get(i)+"\t\t");
         }
         System.out.println("Result");
-        
+
         for(int vertPos=0;vertPos<Math.pow(2,numVars);vertPos++)
         {
             for(int horzPos=0;horzPos<numVars;horzPos++)

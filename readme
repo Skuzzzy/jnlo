@@ -1,0 +1,15 @@
+Takes a string expression parses the string into tokens, then uses the shunting yard algorithm to convert the expression to postfix, this postfix expression can then be evaluated and the results printed in a truth table
+
+Sample output
+
+Expression: c*!(a+b)
+Postfix Reprepsentation: c a b + ! * 
+a		b		c		Result
+true	true	true	false
+true	true	true	false
+true	false	true	false
+true	false	true	false
+false	true	true	false
+false	true	true	false
+false	false	true	true
+false	false	true	true
