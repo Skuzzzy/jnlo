@@ -1,21 +1,23 @@
+package tokens;
+
 /**
  * Created by dan on 2/5/15.
  */
-public class OrToken implements LogToken, Operator
+public class NotToken implements LogToken, Operator
 {
 
     public String getTokenType()
     {
-        return "OrToken";
+        return "NotToken";
     }
 
     public int getOperatorPrecedence()
     {
-        return 3;
+        return 1;
     }
 
     public String toString()
     {
-        return "+";
+        return "!";
     }
 }

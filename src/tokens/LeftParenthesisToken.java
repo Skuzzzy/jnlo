@@ -1,3 +1,7 @@
+package tokens;
+
+import tokens.LogToken;
+
 /**
  * Created by dan on 2/5/15.
  */

@@ -1,12 +1,17 @@
+import tokens.LogToken;
+
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class Main
 {
 
     public static void main(String[] args)
     {
-        ArrayList<LogToken> chips = Parser.parseString("c*!(a+b)");
+        String expr = "c*!(a+b)";
+        ArrayList<LogToken> chips = Parser.parseString(expr);
+
+        System.out.println(expr);
+
         for(LogToken chip : chips)
         {
             //System.out.println(chip.getTokenType());
