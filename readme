@@ -4,12 +4,12 @@ Sample output
 
 Expression: c*!(a+b)
 Postfix Reprepsentation: c a b + ! * 
-a		b		c		Result
-true	true	true	false
-true	true	true	false
-true	false	true	false
-true	false	true	false
-false	true	true	false
-false	true	true	false
-false	false	true	true
-false	false	true	true
+#	a		b		c		Result
+0	false	false	false	false
+1	false	false	true	true
+2	false	true	false	false
+3	false	true	true	false
+4	true	false	false	false
+5	true	false	true	false
+6	true	true	false	false
+7	true	true	true	false

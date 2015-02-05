@@ -71,6 +71,8 @@ public class Evaluator
         {
             inputs[i] = true; //Whatever the inputs are set to here will be flipped
         }
+
+        System.out.print("#\t");
         for(int i=0;i<variables.size();i++)
         {
             System.out.print(variables.get(i)+"\t\t");
@@ -89,6 +91,7 @@ public class Evaluator
             }
 
             //Display Row Stuff
+            System.out.print(vertPos+"\t");
             for(int i=0;i<inputs.length;i++)
             {
                 System.out.print(inputs[i]+ "\t");
