@@ -7,7 +7,11 @@ public class Main
 
     public static void main(String[] args)
     {
-        String expr = "c*!(a+b)";
+        String expr = "(!a*c)+(b*!c)";
+
+        System.out.println(Caonical.getSumOfProductsString(expr, true));
+        System.out.println(Caonical.getProductOfSumsString(expr,true));
+        /*
         System.out.println("Expression: "+expr);
         ArrayList<LogToken> tokenExpression = Parser.parseString(expr);
         ArrayList<LogToken> postfixExpression = Parser.convertToPostfix(tokenExpression);
@@ -33,6 +37,6 @@ public class Main
             }
             System.out.println();
         }
+        */
     }
-
 }
