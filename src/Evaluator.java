@@ -72,7 +72,7 @@ public class Evaluator
             inputs[i] = true; //Whatever the inputs are set to here will be flipped
         }
 
-        System.out.print("#\t");
+        System.out.print("#\t\t");
         for(int i=0;i<variables.size();i++)
         {
             System.out.print(variables.get(i)+"\t\t");
@@ -91,13 +91,48 @@ public class Evaluator
             }
 
             //Display Row Stuff
-            System.out.print(vertPos+"\t");
+            System.out.print(vertPos+"\t\t");
             for(int i=0;i<inputs.length;i++)
             {
-                System.out.print(inputs[i]+ "\t");
+                System.out.print(Globals.booleanToString(inputs[i])+ "\t\t");
             }
-            System.out.println(evaluatePostfixExpression(expression,inputs));
+
+            System.out.println(Globals.booleanToString(evaluatePostfixExpression(expression,inputs)));
+        }
+    }
+
+    public static ArrayList<boolean[]> generateTruthTable(ArrayList<LogToken> expression)
+    {
+        ArrayList<boolean[]> truthTable = new ArrayList<boolean[]>();
+
+        ArrayList<String> variables =  getLexographicalOrderOfVariables(expression);
+        int numVars = variables.size();
+        boolean inputs[] = new boolean[numVars];
+
+        for(int i=0;i<inputs.length;i++)
+        {
+            inputs[i] = true; //Whatever the inputs are set to here will be flipped
         }
 
+        for(int vertPos=0;vertPos<Math.pow(2,numVars);vertPos++)
+        {
+            for(int horzPos=0;horzPos<numVars;horzPos++)
+            {
+                // Magic if statement! Do not touch!
+                if(vertPos%(Math.pow(2,numVars)/Math.pow(2,horzPos+1)) == 0) // This works I swear
+                {
+                    inputs[horzPos] = !inputs[horzPos];
+                }
+            }
+            boolean[] truthTableLine = new boolean[numVars+1];
+            for(int i=0;i<inputs.length;i++)
+            {
+                truthTableLine[i] = inputs[i];
+            }
+            truthTableLine[truthTableLine.length-1] = Evaluator.evaluatePostfixExpression(expression,inputs);
+            truthTable.add(truthTableLine);
+        }
+        return truthTable;
     }
+
 }

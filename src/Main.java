@@ -21,6 +21,18 @@ public class Main
         System.out.print("\n");
 
         Evaluator.displayTruthTable(postfixExpression);
+
+        System.out.println("\n\n\n");
+
+        ArrayList<boolean[]> test = Evaluator.generateTruthTable(postfixExpression);
+        for(boolean[] b : test)
+        {
+            for(boolean a : b)
+            {
+                System.out.print(a+"\t");
+            }
+            System.out.println();
+        }
     }
 
 }
