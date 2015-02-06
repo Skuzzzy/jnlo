@@ -244,7 +244,7 @@ public class Caonical
 
     public static String getReducedProductOfSumsString(String expression)
     {
-        return getReducedSumOfProductsString(expression, true);
+        return getReducedProductOfSumsString(expression, true);
     }
     public static String getReducedProductOfSumsString(String expression, boolean explicitAnd) {
         String reducedSoP = "";
@@ -292,6 +292,10 @@ public class Caonical
 
         for(int i = 0; i < modifiedInputs.size(); i++)
         {
+            if(reducedSoP.length() > 0 && explicitAnd)
+            {
+                reducedSoP += "*";
+            }
             reducedSoP += "(";
             boolean firstTerm = true;
 
@@ -307,7 +311,7 @@ public class Caonical
                     {
                         firstTerm = false;
                     }
-                    else if(explicitAnd)
+                    else
                     {
                         reducedSoP += "+";
                     }
