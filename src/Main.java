@@ -7,10 +7,11 @@ public class Main
 
     public static void main(String[] args)
     {
-        String expr = "(!a*c)+(b*!c)";
-
-        System.out.println(Caonical.getSumOfProductsString(expr, true));
-        System.out.println(Caonical.getProductOfSumsString(expr,true));
+        String expr = "(a*!c)+(b*!c)";
+        System.out.println(expr);
+        System.out.println(Caonical.getSumOfProductsString(expr,true));
+        //System.out.println(Caonical.getProductOfSumsString(expr,true));
+        System.out.println(Caonical.getReducedSumOfProductsString(expr,true));
         /*
         System.out.println("Expression: "+expr);
         ArrayList<LogToken> tokenExpression = Parser.parseString(expr);
