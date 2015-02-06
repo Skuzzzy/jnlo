@@ -165,8 +165,17 @@ public class Caonical
 
         for(int i = 0; i < modifiedInputs.size(); i++)
         {
-            reducedSoP += "(";
+
             boolean firstTerm = true;
+
+            if(i != 0)
+            {
+                reducedSoP += "+(";
+            }
+            else
+            {
+                reducedSoP += "(";
+            }
 
             for (int j = 0; j < modifiedInputs.get(i).length-1; j++)
             {
@@ -233,6 +242,91 @@ public class Caonical
         return result;
     }
 
+    public static String getReducedProductOfSumsString(String expression)
+    {
+        return getReducedSumOfProductsString(expression, true);
+    }
+    public static String getReducedProductOfSumsString(String expression, boolean explicitAnd) {
+        String reducedSoP = "";
+
+        ArrayList<LogToken> tokenExpression = Parser.parseString(expression);
+        ArrayList<LogToken> postfixExpression = Parser.convertToPostfix(tokenExpression);
+        ArrayList<boolean[]> truthTable = Evaluator.generateTruthTable(postfixExpression);
+        ArrayList<String> variables = Evaluator.getLexographicalOrderOfVariables(postfixExpression);
+
+        ArrayList<boolean[]> falseLines = new ArrayList<boolean[]>();
+        for (boolean[] line : truthTable) {
+            if (line[line.length - 1]) {
+                falseLines.add(line);
+            }
+        }
+
+        ArrayList<String[]> modifiedInputs = new ArrayList<String[]>();
+        for (boolean[] line : falseLines) {
+            String[] modified = new String[line.length];
+            for (int i = 0; i < modified.length; i++) {
+                String convert = line[i] ? "true" : "false";
+                modified[i] = convert;
+            }
+            modifiedInputs.add(modified);
+        }
+
+        boolean hasBeenChanges = true;
+        while (hasBeenChanges == true)
+        {
+
+            hasBeenChanges = false;
+            for (int i = 0; i < modifiedInputs.size(); i++) {
+                for (int j = i + 1; j < modifiedInputs.size(); j++) {
+                    int lineDiff = lineDifference(modifiedInputs.get(i), modifiedInputs.get(j));
+                    if (lineDiff == 1) {
+                        hasBeenChanges = true;
+
+                        String[] simplified = simplifyLines(modifiedInputs.get(i), modifiedInputs.get(j));
+                        modifiedInputs.set(i, simplified);
+                        modifiedInputs.remove(j);
+                    }
+                }
+            }
+        }
+
+        for(int i = 0; i < modifiedInputs.size(); i++)
+        {
+            reducedSoP += "(";
+            boolean firstTerm = true;
+
+            for (int j = 0; j < modifiedInputs.get(i).length-1; j++)
+            {
+                if(modifiedInputs.get(i)[j].equals("x"))
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    if(firstTerm)
+                    {
+                        firstTerm = false;
+                    }
+                    else if(explicitAnd)
+                    {
+                        reducedSoP += "+";
+                    }
+
+                    if(modifiedInputs.get(i)[j].equals("true"))
+                    {
+                        reducedSoP += "!" + variables.get(j);
+                    }
+                    else
+                    {
+                        reducedSoP += "" + variables.get(j);
+                    }
+                }
+            }
+            reducedSoP += ")";
+        }
+
+        return reducedSoP;
+    }
 
 
 }
