@@ -10,7 +10,7 @@ public class Main
         String expr = "(!a*a)+(b*!c)+d";
         System.out.println(expr);
         System.out.println(Caonical.getSumOfProductsString(expr,true));
-        //System.out.println(Caonical.getProductOfSumsString(expr,true));
+        System.out.println(Caonical.getProductOfSumsString(expr,true));
         System.out.println(Caonical.getReducedSumOfProductsString(expr,true));
         System.out.println(Caonical.getReducedProductOfSumsString(expr,true));
 

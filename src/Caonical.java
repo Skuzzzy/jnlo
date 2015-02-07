@@ -256,7 +256,7 @@ public class Caonical
 
         ArrayList<boolean[]> falseLines = new ArrayList<boolean[]>();
         for (boolean[] line : truthTable) {
-            if (line[line.length - 1]) {
+            if (!line[line.length - 1]) {
                 falseLines.add(line);
             }
         }
