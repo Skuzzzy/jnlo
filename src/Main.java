@@ -7,12 +7,12 @@ public class Main
 
     public static void main(String[] args)
     {
-        String expr = "(!a*a)+(b*!c)+d";
-        System.out.println(expr);
-        System.out.println(Caonical.getSumOfProductsString(expr,true));
-        System.out.println(Caonical.getProductOfSumsString(expr,true));
-        System.out.println(Caonical.getReducedSumOfProductsString(expr,true));
-        System.out.println(Caonical.getReducedProductOfSumsString(expr,true));
+        String expr = "(a)+(b*!c)+d";
+        System.out.println("Expression: " + expr);
+        System.out.println("Sum of Products Form: " + Caonical.getSumOfProductsString(expr,true));
+        System.out.println("Product of Sums Form: " + Caonical.getProductOfSumsString(expr, true));
+        System.out.println("Minimized Sum of Products Form: " + Caonical.getReducedSumOfProductsString(expr, true));
+        System.out.println("Minimized Product of Sums Form: " + Caonical.getReducedProductOfSumsString(expr,true));
 
 
         /*

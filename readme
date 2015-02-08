@@ -15,3 +15,11 @@ Postfix Reprepsentation: c a b + ! *
 5	true	false	true	false
 6	true	true	false	false
 7	true	true	true	false
+
+Additionally a string expression can be converted into it's SoP and Pos forms, as well as their reduced form
+
+Expression: (a)+(b*!c)+d
+Sum of Products Form: (!a*!b*!c*d)+(!a*!b*c*d)+(!a*b*!c*!d)+(!a*b*!c*d)+(!a*b*c*d)+(a*!b*!c*!d)+(a*!b*!c*d)+(a*!b*c*!d)+(a*!b*c*d)+(a*b*!c*!d)+(a*b*!c*d)+(a*b*c*!d)+(a*b*c*d)
+Product of Sums Form: (a+b+c+d)*(a+b+!c+d)*(a+!b+!c+d)
+Minimized Sum of Products Form: (!a*!b*d)+(b*!c)+(b*c*d)+(a*!b)+(a*b*c*!d)
+Minimized Product of Sums Form: (a+b+d)*(a+!b+!c+d)
